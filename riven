@@ -1,43 +1,75 @@
 #!/usr/bin/env python3
 
-from math import inf
+import time
 import re
 import requests
+import sys
 
 url = "https://api.warframe.market/v1/auctions"
-response = requests.get(url)
+webhook_url = "https://discord.com/api/webhooks/1329891666894786621/RlvaNw35fjhy9ONQYxD1mDgR8xjAzYjkE6BoMzjCFDXcTIcLbg5bx7zA_8BNonvRtOjX"
+previous_ids = set()
+output_file = "auctions_found.txt"
+
+def send_discord_notification(auction_url, price_info, attributes):
+    content = (
+        f"**New Riven Mod Found!**\n"
+        f"{price_info}\n"
+        f"**Attributes:**\n{attributes}\n"
+        f"[View Auction]({auction_url})"
+    )
+    data = {"content": content}
+    response = requests.post(webhook_url, json=data)
+    if response.status_code != 204:
+        print(f"Failed to send Discord notification: {response.status_code}, {response.text}")
 
 def get_weapon():
-    weapon = input("weapon: ")
-    if any(char.isdigit() for char in weapon) or len(weapon) == 0:
-        print("invalid name")
+    weapons = sys.argv[1:]
+    if not weapons:
+        print("weapon : ")
         exit(84)
-    return re.sub(r'[^a-zA-Z]', '_', weapon.lower())
+    return [re.sub(r'[^a-zA-Z]', '_', weapon.lower()) for weapon in weapons]
 
 def get_attributes(item):
-    for stat in item['item']['attributes']:
-        print(f"{stat['url_name']}: {stat['value']}")
-    print()
+    attributes = "\n".join(f"- {stat['url_name']}: {stat['value']}" for stat in item['item']['attributes'])
+    return attributes
 
 def get_price(item):
     if item['buyout_price'] != item['starting_price']:
-        if item['buyout_price'] == None:
-            print(f"starting price : {item['starting_price']} -> auction, buyout price : ∞")
+        if item['buyout_price'] is None:
+            return f"Starting price: {item['starting_price']} -> Auction, Buyout price: ∞"
         else:
-            print(f"starting price : {item['starting_price']} -> auction, buyout price : {item['buyout_price']}")
+            return f"Starting price: {item['starting_price']} -> Auction, Buyout price: {item['buyout_price']}"
     else:
-        print(f"statrting price : {item['starting_price']}")
+        return f"Starting price: {item['starting_price']}"
 
-if response.status_code == 200:
-    min = inf;
-    id = "";
-    weapon = get_weapon()
-    items = response.json()
-    for item in items['payload']['auctions']:
-        if item['item']['weapon_url_name'] == weapon:
-            get_price(item)
-            print("https://warframe.market/auction/", item['id'], sep="")
-            get_attributes(item)
-else:
-    print(f"Error: {response.status_code}")
+def write_to_file(auction_url, price_info, attributes):
+    with open(output_file, 'a') as file:
+        file.write(f"**New Riven Mod Found!**\n")
+        file.write(f"{price_info}\n")
+        file.write(f"**Attributes:**\n{attributes}\n")
+        file.write(f"[View Auction]({auction_url})\n")
+        file.write("\n" + "-"*40 + "\n")
+
+def check_auctions(weapons):
+    global previous_ids
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        items = response.json()
+        for item in items['payload']['auctions']:
+            if item['item']['weapon_url_name'] in weapons:
+                auction_id = item['id']
+                if auction_id not in previous_ids:
+                    previous_ids.add(auction_id)
+                    price_info = get_price(item)
+                    auction_url = f"https://warframe.market/auction/{auction_id}"
+                    attributes = get_attributes(item)
+                    write_to_file(auction_url, price_info, attributes)
+                    send_discord_notification(auction_url, price_info, attributes)
+    else:
+        print(f"Error: {response.status_code}")
+
+if __name__ == "__main__":
+    weapons = get_weapon()
+    check_auctions(weapons)
 
