@@ -61,4 +61,3 @@ def check_auctions(weapons):
 if __name__ == "__main__":
     weapons = ["torid", "ocucor"]
     check_auctions(weapons)
-
