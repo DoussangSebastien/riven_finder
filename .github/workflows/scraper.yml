@@ -2,8 +2,10 @@ name: Run Scraper Every 2 Minutes from 10 AM to 2 AM
 
 on:
   schedule:
-    # Run the script every 2 minutes from 10 AM to 2 AM UTC
-    - cron: '*/2 10-23 * * *' # 10 AM to 11 PM UTC
+    # Every 2 minutes from 10:00 AM to 11:59 PM
+    - cron: '*/2 10-23 * * *'
+    # Every 2 minutes from 12:00 AM to 2:00 AM
+    - cron: '*/2 0-1 * * *'
   workflow_dispatch: # Allows manual triggering
 
 jobs:
@@ -31,7 +33,4 @@ jobs:
       - name: Run scraper script
         run: |
           python scraper.py
-
-
-          name: Run Scraper Every 2 Minutes from 10 AM to 2 AM
 
