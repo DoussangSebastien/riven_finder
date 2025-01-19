@@ -29,6 +29,8 @@ jobs:
 
       # Step 4: Run the scraper script
       - name: Run scraper script
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         run: |
           chmod +x riven
           ./riven

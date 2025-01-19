@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
 
 import requests
+import discord
+import os
+import asyncio
+
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+CHANNEL_ID = 1329891514976829520
+
 
 url = "https://api.warframe.market/v1/auctions"
-webhook_url = "https://discord.com/api/webhooks/1329891666894786621/RlvaNw35fjhy9ONQYxD1mDgR8xjAzYjkE6BoMzjCFDXcTIcLbg5bx7zA_8BNonvRtOjX"
 previous_ids = []
 output_file = "auctions_found.txt"
 
-def send_discord_notification(auction_url, price_info, attributes):
+intents = discord.Intents.default()
+client = discord.Client(intents=intents)
+
+async def send_discord_message(channel, auction_url, price_info, attributes):
     content = (
         f"**New Riven Mod Found!**\n"
         f"{price_info}\n"
         f"**Attributes:**\n{attributes}\n"
         f"[View Auction]({auction_url})"
     )
-    data = {"content": content}
-    response = requests.post(webhook_url, json=data)
-    if response.status_code != 204:
-        print(f"Failed to send Discord notification: {response.status_code}, {response.text}")
+    await channel.send(content)
 
 def get_attributes(item):
     attributes = "\n".join(f"- {stat['url_name']}: {stat['value']}" for stat in item['item']['attributes'])
@@ -40,7 +46,7 @@ def write_to_file(auction_url, price_info, attributes):
         file.write(f"[View Auction]({auction_url})\n")
         file.write("\n" + "-"*40 + "\n")
 
-def check_auctions(weapons):
+async def check_auctions(weapons, channel):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -54,10 +60,21 @@ def check_auctions(weapons):
                     auction_url = f"https://warframe.market/auction/{auction_id}"
                     attributes = get_attributes(item)
                     write_to_file(auction_url, price_info, attributes)
-                    send_discord_notification(auction_url, price_info, attributes)
+                    await send_discord_message(channel, auction_url, price_info, attributes)
     else:
         print(f"Error: {response.status_code}")
 
-if __name__ == "__main__":
+@client.event
+async def on_ready():
+    print(f"Logged in as {client.user}")
+    channel = client.get_channel(CHANNEL_ID)
+    if channel is None:
+        print("Channel not found. Check your CHANNEL_ID.")
+        return
+
     weapons = ["torid", "ocucor"]
-    check_auctions(weapons)
+    await check_auctions(weapons, channel)
+    await client.close()
+
+if __name__ == "__main__":
+    client.run(TOKEN)
