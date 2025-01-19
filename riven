@@ -16,9 +16,9 @@ output_file = "auctions_found.txt"
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-async def send_discord_message(channel, auction_url, price_info, attributes):
+async def send_discord_message(channel, auction_url, price_info, attributes, name):
     content = (
-        f"**New Riven Mod Found!**\n"
+        f"**New Riven {name} Mod Found!**\n"
         f"{price_info}\n"
         f"**Attributes:**\n{attributes}\n"
         f"[View Auction]({auction_url})"
@@ -38,14 +38,6 @@ def get_price(item):
     else:
         return f"Starting price: {item['starting_price']}"
 
-def write_to_file(auction_url, price_info, attributes):
-    with open(output_file, 'a') as file:
-        file.write(f"**New Riven Mod Found!**\n")
-        file.write(f"{price_info}\n")
-        file.write(f"**Attributes:**\n{attributes}\n")
-        file.write(f"[View Auction]({auction_url})\n")
-        file.write("\n" + "-"*40 + "\n")
-
 async def check_auctions(weapons, channel):
     response = requests.get(url)
 
@@ -58,9 +50,9 @@ async def check_auctions(weapons, channel):
                     previous_ids.append(auction_id)
                     price_info = get_price(item)
                     auction_url = f"https://warframe.market/auction/{auction_id}"
+                    name = item['item']['weapon_url_name']
                     attributes = get_attributes(item)
-                    write_to_file(auction_url, price_info, attributes)
-                    await send_discord_message(channel, auction_url, price_info, attributes)
+                    await send_discord_message(channel, auction_url, price_info, attributes, name)
     else:
         print(f"Error: {response.status_code}")
 
@@ -73,8 +65,9 @@ async def on_ready():
         return
 
     weapons = ["torid", "ocucor"]
-    await check_auctions(weapons, channel)
-    await client.close()
+    while True:
+        await check_auctions(weapons, channel)
+        await asyncio.sleep(120)
 
 if __name__ == "__main__":
     client.run(TOKEN)
