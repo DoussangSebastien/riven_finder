@@ -34,9 +34,9 @@ def get_price(item):
         if item['buyout_price'] is None:
             return f"Starting price: {item['starting_price']} -> Auction, Buyout price: ∞"
         else:
-            return f"Price: {item['starting_price']} -> Auction, Buyout price: {item['buyout_price']}"
+            return f"Starting price: {item['starting_price']} -> Auction, Buyout price: {item['buyout_price']}"
     else:
-        return f"Starting price: {item['starting_price']}"
+        return f"Price: {item['starting_price']}"
 
 async def check_auctions(weapons, channel):
     response = requests.get(url)
