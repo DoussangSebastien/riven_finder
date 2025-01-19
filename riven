@@ -70,4 +70,4 @@ async def on_ready():
         await asyncio.sleep(120)
 
 if __name__ == "__main__":
-    #client.run(TOKEN)
+    client.run(TOKEN)
