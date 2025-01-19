@@ -6,9 +6,7 @@ The Warframe Market Scraper is a Python tool that leverages the Warframe Market 
 Features
 
     Retrieve real-time data of newly posted items on the Warframe Market.
-    Automatically check for new listings on the market.
-    Display item details such as price, quantity, and platform.
-    Easily filter and sort new listings based on specific criteria (such as price and item type).
+
 
 Requirements
 
