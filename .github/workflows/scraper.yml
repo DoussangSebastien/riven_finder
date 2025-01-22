@@ -1,4 +1,4 @@
-name: Run Scraper Every 2 Minutes from 10 AM to 2 AM
+name: Run Scraper
 
 on:
   #schedule:
