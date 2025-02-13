@@ -62,7 +62,7 @@ async def on_ready():
     if channel is None:
         print("Channel not found. Check your CHANNEL_ID.")
         return
-    weapons = ["akarius"]
+    weapons = ["akarius","torid","magistar"]
     while True:
         await check_auctions(weapons, channel)
         await asyncio.sleep(120)
