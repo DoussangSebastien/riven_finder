@@ -11,7 +11,6 @@ CHANNEL_ID = 1329891514976829520
 
 url = "https://api.warframe.market/v1/auctions"
 previous_ids = []
-output_file = "auctions_found.txt"
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -42,19 +41,19 @@ async def check_auctions(weapons, channel):
     response = requests.get(url)
 
     if response.status_code == 200:
-        items = response.json()
-        for item in items['payload']['auctions']:
-            if item['item']['weapon_url_name'] in weapons:
-                auction_id = item['id']
-                if auction_id not in previous_ids:
-                    previous_ids.append(auction_id)
-                    price_info = get_price(item)
-                    auction_url = f"https://warframe.market/auction/{auction_id}"
-                    name = item['item']['weapon_url_name']
-                    attributes = get_attributes(item)
-                    await send_discord_message(channel, auction_url, price_info, attributes, name)
-    else:
         print(f"Error: {response.status_code}")
+        return
+    items = response.json()
+    for item in items['payload']['auctions']:
+        if item['item']['weapon_url_name'] in weapons:
+            auction_id = item['id']
+            if auction_id not in previous_ids:
+                previous_ids.append(auction_id)
+                price_info = get_price(item)
+                auction_url = f"https://warframe.market/auction/{auction_id}"
+                name = item['item']['weapon_url_name']
+                attributes = get_attributes(item)
+                await send_discord_message(channel, auction_url, price_info, attributes, name)
 
 @client.event
 async def on_ready():
@@ -63,8 +62,7 @@ async def on_ready():
     if channel is None:
         print("Channel not found. Check your CHANNEL_ID.")
         return
-
-    weapons = ["torid", "ocucor"]
+    weapons = ["akarius"]
     while True:
         await check_auctions(weapons, channel)
         await asyncio.sleep(120)
