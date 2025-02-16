@@ -1,71 +1,25 @@
 #!/usr/bin/env python3
 
-import requests
-import discord
 import os
 import asyncio
+from auctions import *
+from commands import bot
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-CHANNEL_ID = 1329891514976829520
 
-
-url = "https://api.warframe.market/v1/auctions"
-previous_ids = []
-
-intents = discord.Intents.default()
-client = discord.Client(intents=intents)
-
-async def send_discord_message(channel, auction_url, price_info, attributes, name):
-    content = (
-        f"**New {name} Riven Mod Found!**\n"
-        f"{price_info}\n"
-        f"**Attributes:**\n{attributes}\n"
-        f"[View Auction]({auction_url})"
-    )
-    await channel.send(content)
-
-def get_attributes(item):
-    attributes = "\n".join(f"- {stat['url_name']}: {stat['value']}" for stat in item['item']['attributes'])
-    return attributes
-
-def get_price(item):
-    if item['buyout_price'] != item['starting_price']:
-        if item['buyout_price'] is None:
-            return f"Starting price: {item['starting_price']} -> Auction, Buyout price: ∞"
-        else:
-            return f"Starting price: {item['starting_price']} -> Auction, Buyout price: {item['buyout_price']}"
-    else:
-        return f"Price: {item['starting_price']}"
-
-async def check_auctions(weapons, channel):
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        print(f"Error: {response.status_code}")
-        return
-    items = response.json()
-    for item in items['payload']['auctions']:
-        if item['item']['weapon_url_name'] in weapons:
-            auction_id = item['id']
-            if auction_id not in previous_ids:
-                previous_ids.append(auction_id)
-                price_info = get_price(item)
-                auction_url = f"https://warframe.market/auction/{auction_id}"
-                name = item['item']['weapon_url_name']
-                attributes = get_attributes(item)
-                await send_discord_message(channel, auction_url, price_info, attributes, name)
-
-@client.event
-async def on_ready():
-    print(f"Logged in as {client.user}")
-    channel = client.get_channel(CHANNEL_ID)
-    if channel is None:
-        print("Channel not found. Check your CHANNEL_ID.")
-        return
-    weapons = ["akarius"]
+async def auction_loop(channel):
     while True:
-        await check_auctions(weapons, channel)
+        await check_auctions(channel)
         await asyncio.sleep(120)
 
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    channel = bot.get_channel(CHANNEL_ID)
+    if channel is not None:
+        bot.loop.create_task(auction_loop(channel))
+    else:
+        print("Channel not found.")
+
 if __name__ == "__main__":
-    client.run(TOKEN)
+    bot.run(TOKEN)
