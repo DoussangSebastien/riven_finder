@@ -1,7 +1,5 @@
 import requests
 
-CHANNEL_ID = 1329891514976829520
-
 url = "https://api.warframe.market/v1/auctions"
 previous_ids = []
 weapons = []
