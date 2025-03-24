@@ -1,0 +1,14 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+my_venv/
+venv/
+.env/
+.venv/
+
+# Python-specific
+*.pyc
+.python-version
