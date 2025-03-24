@@ -1,4 +1,5 @@
 import requests
+from bot.list import weapon_choices
 
 url = "https://api.warframe.market/v1/auctions"
 previous_ids = []
@@ -42,4 +43,4 @@ async def check_auctions(channel):
                 auction_url = f"https://warframe.market/auction/{auction_id}"
                 name = item['item']['weapon_url_name']
                 attributes = get_attributes(item)
-                await send_discord_message(channel, auction_url, price_info, attributes, name)
+                await send_discord_message(channel, auction_url, price_info, attributes, [key for key, val in weapon_choices.items() if name == val][0])
