@@ -1,33 +1,35 @@
 import discord
 from discord.ext import commands
 from func.auctions import *
+from discord import app_commands
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-@bot.command()
-async def add(ctx, weapon: str):
+@bot.tree.command(name="add", description="Add a weapon to the list")
+@app_commands.describe(weapon="The weapon you want to add")
+async def add(interaction: discord.Interaction, weapon: str):
     if weapon.lower() in weapons:
-        await ctx.send(f"{weapon} is already in the list!")
+        await interaction.response.send_message(f"{weapon} is already in the list!", ephemeral=True)
     else:
         weapons.append(weapon.lower())
-        await ctx.send(f"Added {weapon} to the list!")
-        await check_auctions(ctx.channel)
+        await interaction.response.send_message(f"Added {weapon} to the list!")
+        await check_auctions(interaction.channel)
 
-@bot.command()
-async def remove(ctx, weapon: str):
+@bot.tree.command(name="remove", description="Remove a weapon from the list")
+@app_commands.describe(weapon="The weapon you want to remove")
+async def remove(interaction: discord.Interaction, weapon: str):
     if weapon.lower() not in weapons:
-        await ctx.send(f"{weapon} is already not in the list!")
+        await interaction.response.send_message(f"{weapon} is already not in the list!", ephemeral=True)
     else:
         weapons.remove(weapon.lower())
-        await ctx.send(f"Removed {weapon} from the list!")
+        await interaction.response.send_message(f"Removed {weapon} from the list!")
 
-@bot.command()
-async def disp(ctx):
+@bot.tree.command(name="disp", description="Display weapons in the list")
+async def disp(interaction: discord.Interaction):
     if len(weapons) == 0:
-        await ctx.send("You have no weapons in the list!")
+        await interaction.response.send_message("You have no weapons in the list!")
         return
-    await ctx.send("**You have :**")
-    for weapon in weapons:
-        await ctx.send(f"- {weapon}")
+    weapon_list = "\n".join(f"- {weapon}" for weapon in weapons)
+    await interaction.response.send_message(f"**You have:**\n{weapon_list}")
