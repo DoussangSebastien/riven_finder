@@ -8,7 +8,7 @@ my_venv/
 venv/
 .env/
 .venv/
-
+.env
 # Python-specific
 *.pyc
 .python-version
