@@ -20,7 +20,7 @@ async def add(interaction: discord.Interaction, weapon: str):
         await interaction.response.send_message(f"{weapon_format} is already in the list!", ephemeral=True)
     else:
         weapons.append(weapon.lower())
-        await interaction.response.send_message(f"Added {weapon_format} to the list!")
+        await interaction.response.send_message(f"Added {weapon_format} to the list!", ephemeral=True)
         await check_auctions(interaction.channel)
 
 @bot.tree.command(name="remove", description="Remove a weapon from the list")
@@ -34,12 +34,12 @@ async def remove(interaction: discord.Interaction, weapon: str):
         await interaction.response.send_message(f"{weapon_format} is already not in the list!", ephemeral=True)
     else:
         weapons.remove(weapon.lower())
-        await interaction.response.send_message(f"Removed {weapon_format} from the list!")
+        await interaction.response.send_message(f"Removed {weapon_format} from the list!", ephemeral=True)
 
 @bot.tree.command(name="disp", description="Display weapons in the list")
 async def disp(interaction: discord.Interaction):
     if len(weapons) == 0:
-        await interaction.response.send_message("You have no weapons in the list!")
+        await interaction.response.send_message("You have no weapons in the list!", ephemeral=True)
         return
     weapon_list = "\n".join(f"- {weapon}" for weapon in weapons)
-    await interaction.response.send_message(f"**You have:**\n{weapon_list}")
+    await interaction.response.send_message(f"**You have:**\n{weapon_list}", ephemeral=True)
