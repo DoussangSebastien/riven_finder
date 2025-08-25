@@ -1,7 +1,8 @@
 import requests
 from bot.list import weapon_choices
 
-url = "https://api.warframe.market/v1/auctions"
+baseurl = "https://api.warframe.market"
+url = f"{baseurl}/v1/auctions"
 previous_ids = []
 weapons = []
 
@@ -22,6 +23,16 @@ def get_price(item):
         return f"Starting price: {item['starting_price']} -> Auction, Buyout price: {item['buyout_price'] or '∞'}"
     return f"Price: {item['starting_price']}"
 
+def normalize_weapon_name(name):
+    suffixes = ["_prime", "_prisma"]
+    for s in suffixes:
+        if name.endswith(s):
+            return name[: -len(s)]
+    return name
+
+def is_same_weapon(current_weapon, list_weapon):
+    return normalize_weapon_name(current_weapon) == normalize_weapon_name(list_weapon)
+
 async def check_auctions(channel):
     response = requests.get(url)
     if response.status_code != 200:
@@ -35,7 +46,7 @@ async def check_auctions(channel):
     for item in items.get('payload', {}).get('auctions', []):
         if 'item' not in item or 'weapon_url_name' not in item['item']:
             continue
-        if item['item']['weapon_url_name'] in weapons:
+        if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons):
             auction_id = item['id']
             if auction_id not in previous_ids:
                 previous_ids.append(auction_id)

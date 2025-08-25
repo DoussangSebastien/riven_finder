@@ -1,0 +1,689 @@
+Shedu
+Bubonico
+Cernos
+Cernos Prime
+Cinta
+Daikyu
+Daikyu Prime
+Dread
+Evensong
+Kuva Bramma
+Lenz
+MK1-Paris
+Mutalist Cernos
+Nataruk
+Paris
+Paris Prime
+Prisma Lenz
+Proboscis Cernos
+Rakta Cernos
+Attica
+Zhuge
+Zhuge Prime
+Nagantaka
+Nagantaka Prime
+Artemis Bow
+Artemis Bow Prime
+Lizzie
+Neutralizer
+Carmine Penta
+Penta
+Secura Penta
+Tenet Envoy
+Ogris
+Kuva Ogris
+Kuva Tonkor
+Kuva Zarr
+Tonkor
+Torid
+Zarr
+Simulor
+Synoid Simulor
+AX-52
+Acceltra
+Acceltra Prime
+Baza
+Baza Prime
+Boltor
+Boltor Prime
+Braton
+Braton Prime
+Braton Vandal
+Dera
+Dera Vandal
+Gotva Prime
+Grakata
+Karak
+Karak Wraith
+Kuva Karak
+MK1-Braton
+Prisma Grakata
+Prisma Tetra
+Reconifex
+Telos Boltor
+Tenet Flux Rifle
+Tetra
+Alternox
+Kuva Quartakk
+Aeolak
+Ambassador
+EFV-5 Jupiter
+Quellor
+Stahlta
+Basmu
+Panthera
+Panthera Prime
+Argonak
+Buzlok
+Fulmin
+Fulmin Prime
+Mutalist Quanta
+Phenmor
+Stradavar
+Stradavar Prime
+Tenet Tetra
+Trumna
+Trumna Prime
+Zenith
+Battacor
+Gorgon
+Gorgon Wraith
+Prisma Gorgon
+Soma
+Soma Prime
+Supra
+Supra Vandal
+Tenora
+Tenora Prime
+Burston
+Burston Prime
+Coda Hema
+Dex Sybaris
+Hema
+Paracyst
+Quartakk
+Sybaris
+Sybaris Prime
+Tiberon
+Higasa
+Harpak
+Hind
+Kuva Hind
+Tiberon Prime
+Miter
+Opticor
+Opticor Vandal
+Amprex
+Coda Synapse
+Flux Rifle
+Glaxion
+Glaxion Vandal
+Ignis
+Ignis Wraith
+Synapse
+Tenet Glaxion
+Quanta
+Quanta Vandal
+Grinlok
+Kuva Chakkhurr
+Latron
+Latron Prime
+Latron Wraith
+Prisma Grinlok
+Purgator 1
+Veldt
+Astilla
+Astilla Prime
+Boar
+Boar Prime
+Kuva Sobek
+Sobek
+Cedo
+Cedo Prime
+Felarx
+Kohm
+Kuva Kohm
+Drakgoon
+Kuva Drakgoon
+Sancti Tigris
+Tigris
+Tigris Prime
+Convectrix
+Phage
+Phantasma
+Phantasma Prime
+Arca Plasmor
+Coda Bassocyst
+Corinth
+Corinth Prime
+Exergis
+Hek
+Kuva Hek
+MK1-Strun
+Rauta
+Steflos
+Strun
+Strun Prime
+Strun Wraith
+Tenet Arca Plasmor
+Vaykor Hek
+Perigale
+Lanka
+Coda Sporothrix
+Komorex
+Rubico
+Rubico Prime
+Snipetron
+Snipetron Vandal
+Sporothrix
+Vectis
+Vectis Prime
+Vulkar
+Vulkar Wraith
+Scourge
+Scourge Prime
+Javlok
+Ferrox
+Tenet Ferrox
+Afentis
+
+
+Ballistica
+Rakta Ballistica
+Ballistica Prime
+Afuris
+Afuris Prime
+Akstiletto
+Akstiletto Prime
+Akzani
+Dex Furis
+Dual Cestra
+Dual Coda Torxica
+Kuva Twin Stubbas
+Prisma Twin Gremlins
+Twin Grakatas
+Twin Gremlins
+Twin Vipers
+Twin Vipers Wraith
+Tenet Diplos
+Aksomati
+Aksomati Prime
+Secura Dual Cestra
+Akarius
+Akarius Prime
+Akjagara
+Akjagara Prime
+Akbolto
+Akbolto Prime
+Aklato
+Aklex
+Aklex Prime
+Akmagnus
+Akmagnus Prime
+Akvasto
+Akvasto Prime
+Dual Toxocyst
+Telos Akbolto
+Twin Kohmak
+Akbronco
+Akbronco Prime
+Twin Rogga
+Dex Pixia
+Dex Pixia Prime
+Glory
+Noctua
+Regulators
+Regulators Prime
+Balefire Charger
+Balefire Charger Prime
+Azima
+Cestra
+Furis
+Hystrix
+Hystrix Prime
+Knell
+Knell Prime
+Kompressa
+Kompressa Prime
+MK1-Furis
+Onos
+Riot-848
+Stubba
+Velox
+Velox Prime
+Viper
+Viper Wraith
+Quatz
+Stug
+Athodai
+Cyanex
+Kraken
+Sepulcrum
+Sicarus
+Sicarus Prime
+Kuva Kraken
+Angstrum
+Prisma Angstrum
+Zylok
+Zylok Prime
+Atomos
+Catabolyst
+Coda Catabolyst
+Cycron
+Embolist
+Gammacor
+Kuva Nukor
+Nukor
+Ocucor
+Spectra
+Spectra Vandal
+Synoid Gammacor
+Tenet Cycron
+Laetum
+Epitaph
+Epitaph Prime
+Tenet Plinx
+Acrid
+Arca Scisco
+Bolto
+Coda Tysis
+EFV-8 Mars
+Kulstar
+Kuva Seer
+Lato
+Lato Prime
+Lato Vandal
+Lex
+Lex Prime
+Magnus
+Magnus Prime
+Marelok
+Plinx
+Seer
+Sonicor
+Tenet Spirex
+Tysis
+Vasto
+Vasto Prime
+Vaykor Marelok
+Vesper 77
+Zakti
+Zakti Prime
+Zymos
+Pandero
+Pandero Prime
+Pyrana
+Pyrana Prime
+Kohmak
+Brakk
+Bronco
+Bronco Prime
+Detron
+Euphona Prime
+Kuva Brakk
+Mara Detron
+Tenet Detron
+Aegrit
+Castanas
+Sancti Castanas
+Talons
+Cantare
+Coda Pox
+Despair
+Hikou
+Hikou Prime
+Kunai
+MK1-Kunai
+Pox
+Spira
+Spira Prime
+Fusilai
+Scyotid
+Staticor
+Grimoire
+
+
+Ghoulsaw
+Ceti Lacera
+Dorrclave
+Jat Kusar
+Lacera
+Mios
+Garuda Prime Talons
+Garuda Talons
+Keratinos
+Ripkas
+Venka
+Venka Prime
+Ceramic Dagger
+Dark Dagger
+Heat Dagger
+Innodem
+Karyst
+Karyst Prime
+Rakta Dark Dagger
+Rumblejack
+Sheev
+Ether Daggers
+Fang
+Fang Prime
+Nepheri
+Okina
+Okina Prime
+Sun & Moon
+Dark Split-Sword Dual Swords
+Dex Dakra
+Dual Cleavers
+Dual Ether
+Dual Heat Swords
+Dual Ichor
+Dual Kamas
+Dual Kamas Prime
+Dual Keres
+Dual Keres Prime
+Dual Raza
+Dual Skana
+Dual Viciss
+Dual Zoren
+Dual Zoren Prime
+Nami Skyla
+Nami Skyla Prime
+Prisma Dual Cleavers
+Twin Basolk
+Twin Krohkur
+Desert Wind
+Desert Wind Prime
+Diwata
+Diwata Prime
+Exalted Blade
+Exalted Prime Blade
+Exalted Umbra Blade
+Iron Staff
+Iron Staff Prime
+Landslide Fists
+Landslide Fists Prime
+Shadow Claws
+Shadow Claws Prime
+Shadow Clones
+Shadow Clones Prime
+Shattered Lash
+Shattered Lash Prime
+Valkyr Prime Talons
+Valkyr Talons
+Whipclaw
+Whipclaw Prime
+Ankyros
+Ankyros Prime
+Furax
+Furax Wraith
+MK1-Furax
+Ruvox
+Tekko
+Tekko Prime
+Cerata
+Coda Pathocyst
+Falcor
+Glaive
+Glaive Prime
+Halikar
+Halikar Wraith
+Kestrel
+Orvius
+Pathocyst
+Xoris
+Redeemer
+Redeemer Prime
+Sarpa
+Stropha
+Vastilok
+Arca Titron
+Coda Motovore
+Ekhein
+Fragor
+Fragor Prime
+Heliocor
+Jat Kittag
+Kuva Shildeg
+Magistar
+Sampotes
+Sancti Magistar
+Sibear
+Synoid Heliocor
+Volnus
+Volnus Prime
+Wolf Sledge
+Dark Split-Sword Heavy Blade
+Galatine
+Galatine Prime
+Gram
+Gram Prime
+Masseter
+Masseter Prime
+Paracesis
+Sarofang
+Scindo
+Scindo Prime
+Tenet Exec
+Vitrica
+War
+Zenistar
+Corufell
+Hespar
+Thalys
+Gazal Machete
+Kama
+Kreska
+Machete
+Machete Wraith
+Nami Solo
+Prisma Machete
+Prova
+Prova Vandal
+Slaytra
+Dex Nikana
+Dragon Nikana
+Nikana
+Nikana Prime
+Skiajati
+Syam
+Ninkondi
+Ninkondi Prime
+Pulmonars
+Shaku
+Amanata
+Cassowar
+Edun
+Guandao
+Guandao Prime
+Kesheg
+Korumm
+Lesion
+Orthos
+Orthos Prime
+Pupacyst
+Serro
+Sydon
+Tonbo
+Vaykor Sydon
+Destreza
+Destreza Prime
+Endura
+Anku
+Caustacyst
+Coda Caustacyst
+Ether Reaper
+Harmony
+Hate
+Reaper Prime
+Tenet Grigori
+Venato
+Coda Hirudo
+Hirudo
+Kogake
+Kogake Prime
+Korrudo
+Obex
+Prisma Obex
+Amphis
+Bo
+Bo Prime
+Broken Scepter
+Cadus
+MK1-Bo
+Tipedo
+Tipedo Prime
+Ack & Brunt
+Argo & Vel
+Cobra & Crane
+Cobra & Crane Prime
+Sigma & Octantis
+Silva & Aegis
+Silva & Aegis Prime
+Tak & Lug
+Tenet Agendus
+Broken War
+Coda Mire
+Cronus
+Dakra Prime
+Dark Sword
+Ether Sword
+Heat Sword
+Jaw Sword
+Krohkur
+Mire
+Pangolin Prime
+Pangolin Sword
+Plasma Sword
+Prisma Skana
+Skana
+Skana Prime
+Boltace
+Kronen
+Kronen Prime
+Ohma
+Praedos
+Prisma Ohma
+Telos Boltace
+Tonkkatt
+Azothane
+Pennant
+Tatsu
+Tatsu Prime
+Tenet Livia
+Arum Spinosa
+Gunsen
+Gunsen Prime
+Quassus
+Quassus Prime
+Vericres
+Atterax
+Galvacord
+Lecta
+Scoliac
+Secura Lecta
+Spinnerex
+Verdilac
+
+
+
+Tombfinger
+Balla
+Rabvee
+Cyath
+Kronsh
+Sepfahn
+Dehtat
+Plague Kripath
+Dokrahm
+Plague Keewar
+Mewan
+Ooltha
+Rattleguts Secondary
+Gaze Secondary
+Vermisplicer Secondary
+Catchmoon Secondary
+Sporelacer Secondary
+Tombfinger Secondary
+Rattleguts Primary
+Gaze Primary
+Vermisplicer Primary
+Catchmoon Primary
+Sporelacer Primary
+
+
+
+Dual Decurion
+Imperator
+Kuva Ayanga
+Kuva Grattler
+Prisma Dual Decurions
+Mausolon
+Cyngas
+Morgha
+Grattler
+Imperator Vandal
+Phaedra
+Corvas
+Corvas Prime
+Mandonel
+Velocitus
+Cortege
+Larkspur
+Larkspur Prime
+Fluctus
+Dual Decurion Atmosphere
+Prisma Dual Decurions Atmosphere
+Arquebex
+Kuva Ayanga Atmosphere
+Kuva Grattler Atmosphere
+Morgha Atmosphere
+Grattler Atmosphere
+Agkuza
+Centaur
+Kaszas
+Knux
+Onorix
+Prisma Veritux
+Rathbone
+Veritux
+Ironbride
+Imperator Atmosphere
+Mausolon Atmosphere
+Imperator Vandal Atmosphere
+Phaedra Atmosphere
+Cyngas Atmosphere
+Velocitus Atmosphere
+Cortege Atmosphere
+Larkspur Atmosphere
+Larkspur Prime Atmosphere
+Fluctus Atmosphere
+Corvas Atmosphere
+Corvas Prime Atmosphere
+Mandonel Atmosphere
+
+
+
+Deconstructor
+Deconstructor Prime
+Akaten
+Batoten
+Lacerten
+Burst Laser
+Burst Laser Prime
+Prisma Burst Laser
+Laser Rifle
+Prime Laser Rifle
+Deth Machine Rifle
+Deth Machine Rifle Prime
+Helstrum
+Multron
+Vulcax
+Artax
+Tazicor
+Verglas
+Verglas Prime
+Cryotra
+Stinger
+Sweeper
+Sweeper Prime
+Vulklok
