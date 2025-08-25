@@ -12,3 +12,6 @@ venv/
 # Python-specific
 *.pyc
 .python-version
+
+# cache
+cache/

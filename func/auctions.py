@@ -1,10 +1,13 @@
 import requests
 from bot.list import weapon_choices
+from func.cache import load_cache, save_cache
 
 baseurl = "https://api.warframe.market"
 url = f"{baseurl}/v1/auctions"
-previous_ids = []
-weapons = []
+cache_dir = "cache"
+
+previous_ids = load_cache(f"{cache_dir}/previous_ids.json", [])
+weapons = load_cache(f"{cache_dir}/weapons.json", [])
 
 async def send_discord_message(channel, auction_url, price_info, attributes, name):
     content = (
@@ -54,4 +57,6 @@ async def check_auctions(channel):
                 auction_url = f"https://warframe.market/auction/{auction_id}"
                 name = item['item']['weapon_url_name']
                 attributes = get_attributes(item)
+                save_cache(f"{cache_dir}/previous_ids.json", previous_ids)
+                save_cache(f"{cache_dir}/weapons.json", weapons)
                 await send_discord_message(channel, auction_url, price_info, attributes, [key for key, val in weapon_choices.items() if name == val][0])
