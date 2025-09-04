@@ -52,11 +52,11 @@ async def check_auctions(channel):
         if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons):
             auction_id = item['id']
             if auction_id not in previous_ids:
-                previous_ids.append(auction_id)
                 price_info = get_price(item)
                 auction_url = f"https://warframe.market/auction/{auction_id}"
                 name = item['item']['weapon_url_name']
                 attributes = get_attributes(item)
+                previous_ids.append({"weapon": name, "id" : auction_id, "attributes": attributes, "price": price_info})
                 save_cache(f"{cache_dir}/previous_ids.json", previous_ids)
                 save_cache(f"{cache_dir}/weapons.json", weapons)
                 await send_discord_message(channel, auction_url, price_info, attributes, [key for key, val in weapon_choices.items() if name == val][0])
