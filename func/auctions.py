@@ -19,7 +19,7 @@ async def send_discord_message(channel, auction_url, price_info, attributes, nam
     await channel.send(content)
 
 def get_attributes(item):
-    return "\n".join(f"- {stat['url_name']}: {stat['value']}" for stat in item['item']['attributes'])
+    return "\n".join(f"{stat['url_name']}: {stat['value']}" for stat in item['item']['attributes'])
 
 def get_price(item):
     if item['buyout_price'] != item['starting_price']:
@@ -49,14 +49,13 @@ async def check_auctions(channel):
     for item in items.get('payload', {}).get('auctions', []):
         if 'item' not in item or 'weapon_url_name' not in item['item']:
             continue
-        if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons):
-            auction_id = item['id']
-            if auction_id not in previous_ids:
-                price_info = get_price(item)
-                auction_url = f"https://warframe.market/auction/{auction_id}"
-                name = item['item']['weapon_url_name']
-                attributes = get_attributes(item)
-                previous_ids.append({"weapon": name, "id" : auction_id, "attributes": attributes, "price": price_info})
-                save_cache(f"{cache_dir}/previous_ids.json", previous_ids)
-                save_cache(f"{cache_dir}/weapons.json", weapons)
-                await send_discord_message(channel, auction_url, price_info, attributes, [key for key, val in weapon_choices.items() if name == val][0])
+        auction_id = item['id']
+        if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons) and (auction_id not in previous_ids):
+            price_info = get_price(item)
+            auction_url = f"https://warframe.market/auction/{auction_id}"
+            name = item['item']['weapon_url_name']
+            attributes = get_attributes(item)
+            previous_ids.append({"weapon": name, "id" : auction_id, "attributes": attributes, "price": price_info})
+            save_cache(f"{cache_dir}/previous_ids.json", previous_ids)
+            save_cache(f"{cache_dir}/weapons.json", weapons)
+            await send_discord_message(channel, auction_url, price_info, attributes, [key for key, val in weapon_choices.items() if name == val][0])
