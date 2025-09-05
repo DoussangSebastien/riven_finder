@@ -4,6 +4,7 @@ from func.auctions import *
 from discord import app_commands
 from bot.list import weapon_choices
 from bot.autocomplete import *
+from include.data import cache_dir
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -34,6 +35,7 @@ async def remove(interaction: discord.Interaction, weapon: str):
         await interaction.response.send_message(f"{weapon_format} is already not in the list!", ephemeral=True)
     else:
         weapons.remove(weapon.lower())
+        save_cache(f"{cache_dir}/weapons.json", weapons)
         await interaction.response.send_message(f"Removed {weapon_format} from the list!", ephemeral=True)
 
 @bot.tree.command(name="disp", description="Display weapons in the list")
@@ -43,3 +45,9 @@ async def disp(interaction: discord.Interaction):
         return
     weapon_list = "\n".join(f"- {weapon}" for weapon in weapons)
     await interaction.response.send_message(f"**You have:**\n{weapon_list}", ephemeral=True)
+
+@bot.tree.command(name="search", description="Search for riven in the list")
+@app_commands.describe(weapon="The riven you want")
+@app_commands.autocomplete(weapon=add_autocomplete)
+async def search(interaction: discord.Interaction, weapon: str, atr1: str, atr2: str, atr3: str, neg: str):
+    pass

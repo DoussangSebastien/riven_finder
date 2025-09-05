@@ -4,7 +4,6 @@ from bot.list import weapon_choices
 from func.auctions import weapons
 
 sorted_weapon_choices = sorted((display_name.lower(), display_name, api_name) for display_name, api_name in weapon_choices.items())
-sorted_weapons = sorted((weapon.lower(), weapon) for weapon in weapons)
 weapon_check = {api_name.lower(): display_name for display_name, api_name in weapon_choices.items()}
 
 def dichotomic_autocomplete(sorted_list, prefix, limit=25):
@@ -16,10 +15,18 @@ def dichotomic_autocomplete(sorted_list, prefix, limit=25):
         start_index += 1
     return results
 
-async def add_autocomplete(interaction, current: str):
-    matches = dichotomic_autocomplete(sorted_weapon_choices, current)
-    return [app_commands.Choice(name=display_name, value=api_name) for _, display_name, api_name in matches]
+def make_weapon_autocomplete(choice_list):
+    async def inner(interaction, current: str):
+        matches = dichotomic_autocomplete(choice_list, current)
+        return [app_commands.Choice(name=display_name, value=api_name) for _, display_name, api_name in matches]
+    return inner
+
+add_autocomplete = make_weapon_autocomplete(sorted_weapon_choices)
 
 async def remove_autocomplete(interaction, current: str):
+    sorted_weapons = sorted((weapon.lower(), weapon) for weapon in weapons)
     matches = dichotomic_autocomplete(sorted_weapons, current)
-    return [app_commands.Choice(name=weapon_check[api_name_lower], value=weapon_name) for api_name_lower, weapon_name in matches]
+    return [app_commands.Choice(name=weapon_check[display_name], value=api_name) for display_name, api_name in matches]
+
+# search autocomplete
+search_weapon_autocomplete = make_weapon_autocomplete(sorted_weapon_choices)
