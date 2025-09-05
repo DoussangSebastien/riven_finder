@@ -1,10 +1,7 @@
 import requests
 from bot.list import weapon_choices
 from func.cache import load_cache, save_cache
-
-baseurl = "https://api.warframe.market"
-url = f"{baseurl}/v1/auctions"
-cache_dir = "cache"
+from include.data import baseurl, url, cache_dir
 
 previous_ids = load_cache(f"{cache_dir}/previous_ids.json", [])
 weapons = load_cache(f"{cache_dir}/weapons.json", [])
