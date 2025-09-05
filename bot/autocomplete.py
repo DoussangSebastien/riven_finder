@@ -1,9 +1,12 @@
 from bisect import bisect_left
 from discord import app_commands
 from bot.weapon_list import weapon_choices
+from bot.riven_attribute_list import riven_positive_attributes, riven_negative_attributes
 from func.auctions import weapons
 
 sorted_weapon_choices = sorted((display_name.lower(), display_name, api_name) for display_name, api_name in weapon_choices.items())
+sorted_positive_riven_attributes = sorted((display_name.lower(), display_name, api_name) for display_name, api_name in riven_positive_attributes.items())
+sorted_negative_riven_attributes = sorted((display_name.lower(), display_name, api_name) for display_name, api_name in riven_negative_attributes.items())
 weapon_check = {api_name.lower(): display_name for display_name, api_name in weapon_choices.items()}
 
 def dichotomic_autocomplete(sorted_list, prefix, limit=25):
@@ -30,3 +33,5 @@ async def remove_autocomplete(interaction, current: str):
 
 # search autocomplete
 search_weapon_autocomplete = make_weapon_autocomplete(sorted_weapon_choices)
+positive_attribute_autocomplete = make_weapon_autocomplete(sorted_positive_riven_attributes)
+negative_attribute_autocomplete = make_weapon_autocomplete(sorted_negative_riven_attributes)

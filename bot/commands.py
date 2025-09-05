@@ -48,6 +48,11 @@ async def disp(interaction: discord.Interaction):
 
 @bot.tree.command(name="search", description="Search for riven in the list")
 @app_commands.describe(weapon="The riven you want")
-@app_commands.autocomplete(weapon=add_autocomplete)
+@app_commands.autocomplete(
+              weapon=search_weapon_autocomplete,
+              atr1=positive_attribute_autocomplete,
+              atr2=positive_attribute_autocomplete,
+              atr3=positive_attribute_autocomplete,
+              neg=negative_attribute_autocomplete)
 async def search(interaction: discord.Interaction, weapon: str, atr1: str, atr2: str, atr3: str, neg: str):
-    pass
+    await interaction.response.send_message(f"hello!", ephemeral=True)
