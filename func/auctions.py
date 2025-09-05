@@ -47,7 +47,8 @@ async def check_auctions(channel):
         if 'item' not in item or 'weapon_url_name' not in item['item']:
             continue
         auction_id = item['id']
-        if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons) and (auction_id not in previous_ids):
+        if any(is_same_weapon(item['item']['weapon_url_name'], w) for w in weapons) and all(auction_id != previous['id'] for previous in previous_ids):
+            print("new")
             price_info = get_price(item)
             auction_url = f"https://warframe.market/auction/{auction_id}"
             name = item['item']['weapon_url_name']
