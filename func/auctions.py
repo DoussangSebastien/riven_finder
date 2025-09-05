@@ -1,5 +1,5 @@
 import requests
-from bot.list import weapon_choices
+from bot.weapon_list import weapon_choices
 from func.cache import load_cache, save_cache
 from include.data import baseurl, url, cache_dir
 

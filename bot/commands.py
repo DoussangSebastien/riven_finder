@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from func.auctions import *
 from discord import app_commands
-from bot.list import weapon_choices
+from bot.weapon_list import weapon_choices
 from bot.autocomplete import *
 from include.data import cache_dir
 
