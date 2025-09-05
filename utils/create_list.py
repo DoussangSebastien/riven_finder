@@ -14,7 +14,7 @@ with open(file_path, "r", encoding="utf-8") as f:
         else:
             result[line] = line.lower().replace(" ", "_")
 
-print("weapon_choices = {")
+print("riven_attributes = {")
 for k, v in result.items():
     print(f'  "{k}": "{v}",')
 print("}")

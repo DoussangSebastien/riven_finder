@@ -1,6 +1,6 @@
 from bisect import bisect_left
 from discord import app_commands
-from bot.list import weapon_choices
+from bot.weapon_list import weapon_choices
 from func.auctions import weapons
 
 sorted_weapon_choices = sorted((display_name.lower(), display_name, api_name) for display_name, api_name in weapon_choices.items())

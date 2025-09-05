@@ -1,0 +1,37 @@
+Positive: 
+Ammo Maximum
+Cold
+Critical Chance
+Critical Damage
+Damage
+Damage to Corpus
+Damage to Grineer
+Damage to Infested
+Electricity
+Fire Rate / Attack Speed
+Heat
+Impact
+Magazine Capacity
+Multishot
+Projectile speed
+Punch Through
+Puncture
+Reload Speed
+Slash
+Status Chance
+Status Duration
+Toxin
+Weapon Recoil
+Zoom
+
+Additional Combo Count Chance
+Combo Duration
+Critical Chance for Slide Attack
+Finisher Damage
+Heavy Attack Efficiency
+Initial combo
+Range
+
+Negative:
+Has Negative
+No Negative
