@@ -1,4 +1,5 @@
 weapon_choices = {
+  "None": "None",
   "Shedu": "shedu",
   "Bubonico": "bubonico",
   "Cernos": "cernos",

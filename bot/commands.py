@@ -5,6 +5,7 @@ from discord import app_commands
 from bot.weapon_list import weapon_choices
 from bot.autocomplete import *
 from include.data import cache_dir
+from func.is_attribute_pos import is_attribute_pos
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -47,12 +48,33 @@ async def disp(interaction: discord.Interaction):
     await interaction.response.send_message(f"**You have:**\n{weapon_list}", ephemeral=True)
 
 @bot.tree.command(name="search", description="Search for riven in the list")
-@app_commands.describe(weapon="The riven you want")
+@app_commands.describe(user_weapon="The riven you want")
 @app_commands.autocomplete(
-              weapon=search_weapon_autocomplete,
+              user_weapon=search_weapon_autocomplete,
               atr1=positive_attribute_autocomplete,
               atr2=positive_attribute_autocomplete,
               atr3=positive_attribute_autocomplete,
               neg=negative_attribute_autocomplete)
-async def search(interaction: discord.Interaction, weapon: str, atr1: str, atr2: str, atr3: str, neg: str):
-    await interaction.response.send_message(f"hello!", ephemeral=True)
+async def search(interaction: discord.Interaction, user_weapon: str, atr1: str, atr2: str, atr3: str, neg: str):
+    valid = {}
+    for item in previous_ids:
+        weapon = item["weapon"]
+        id_ = item["id"]
+        attributes = item["attributes"]
+        price = item["price"]
+        invalid_atr = False
+        if user_weapon != "None" and user_weapon != weapon:
+            continue
+        for atr in (atr1, atr2, atr3):
+            if atr == "None":
+                continue
+            if (atr not in attributes) or (not is_attribute_pos(atr, attributes)):
+                invalid_atr = True
+                break
+        if (neg not in attributes) or (is_attribute_pos(neg, attributes)):
+            continue
+        if (invalid_atr):
+            continue
+        valid[item[id]] = item
+        valid.update(item)
+        await interaction.response.send_message(f"{item}", ephemeral=True)

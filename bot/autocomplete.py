@@ -18,13 +18,13 @@ def dichotomic_autocomplete(sorted_list, prefix, limit=25):
         start_index += 1
     return results
 
-def make_weapon_autocomplete(choice_list):
+def make_autocomplete(choice_list):
     async def inner(interaction, current: str):
         matches = dichotomic_autocomplete(choice_list, current)
         return [app_commands.Choice(name=display_name, value=api_name) for _, display_name, api_name in matches]
     return inner
 
-add_autocomplete = make_weapon_autocomplete(sorted_weapon_choices)
+add_autocomplete = make_autocomplete(sorted_weapon_choices)
 
 async def remove_autocomplete(interaction, current: str):
     sorted_weapons = sorted((weapon.lower(), weapon) for weapon in weapons)
@@ -32,6 +32,6 @@ async def remove_autocomplete(interaction, current: str):
     return [app_commands.Choice(name=weapon_check[display_name], value=api_name) for display_name, api_name in matches]
 
 # search autocomplete
-search_weapon_autocomplete = make_weapon_autocomplete(sorted_weapon_choices)
-positive_attribute_autocomplete = make_weapon_autocomplete(sorted_positive_riven_attributes)
-negative_attribute_autocomplete = make_weapon_autocomplete(sorted_negative_riven_attributes)
+search_weapon_autocomplete = make_autocomplete(sorted_weapon_choices)
+positive_attribute_autocomplete = make_autocomplete(sorted_positive_riven_attributes)
+negative_attribute_autocomplete = make_autocomplete(sorted_negative_riven_attributes)

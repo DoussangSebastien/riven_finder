@@ -30,8 +30,7 @@ riven_positive_attributes = {
   "Heavy Attack Efficiency": "heavy_attack_efficiency",
   "Initial combo": "initial_combo",
   "Range": "range",
-  "Has Negative": "has_negative",
-  "No Negative": "no_negative",
+  "None": "None",
 }
 
 riven_negative_attributes = {
